@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<body>
+<hr><!-- BEGIN TPL (DO NOT REMOVE!) -->
+<!-- tinyMCE -->
+<script language="javascript" type="text/javascript">
+<!--
+function disableButtonsInForm()
+{
+    var buttons = new Array(
+                            'SaveButton1',
+                            'SaveButton2',
+                            'CancelButton1',
+                            'CancelButton2'
+                            );
+    disableButtons(buttons);
+}
+
+function trim(s)
+{
+    var left = 0;
+    var len = s.length;
+
+    if (s.length == 0) return "";
+
+    while (s.charAt(left) == ' ')
+    {
+        if (left == len - 1) break;
+        left++;
+    }
+
+    if (left == len - 1) return "";
+
+    var right = len - 1;
+    while (s.charAt(right) == ' ')
+    {
+        if (right == 0) break;
+        right--;
+    }
+
+    if (right == 0) return "";
+
+    return s.substring(left, right + 1);
+}
+
+
+function formSubmit(formId, formAction)
+{
+    var form = document.forms[formId];
+    if (formAction == 'save')
+    {
+        if (trim(form.ModuleName.value) == "")
+        {
+            alert('<?php Alert_001(); ?>');
+            return;
+        }
+    }
+
+    form.elements['ViewState[FormSubmitValue]'].value = formAction;
+    disableButtonsInForm();
+    form.submit();
+}
+
+//-->
+</script>
+
+<form <?php EditWtpForm(); ?> method="post" id="EditWtpForm">
+<?php HiddenArrayViewState(); ?>
+
+<table class="form" cellspacing="1" cellpadding="5" width="100%" align="center">
+    <colgroup>
+      <col width="20%">
+      <col width="0%">
+      <col width="75%">
+
+    <tr class="title">
+        <td class="title popup_dialog_header_left_right_padded" colspan="3"><?php ModuleType(); ?> <?php ModuleName(); ?></td>
+    </tr>
+    <tr class="subtitle" style="height: 25px;">
+        <td class="popup_dialog_header_left_right_padded" colspan="3" style="padding: 0px 0px 0px 4px;">
+            <table class="clear" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="80%"><?php ModuleName(); ?> <?php Subtitle(); ?></td>
+                    <td nowrap style="padding-right: 8px;">&nbsp;</td>
+                    <td nowrap style="padding-right: 8px;">&nbsp;</td>
+                    <td style="padding-right: 6px;"><div id="SaveButton1" class="button button_5em" onclick="formSubmit('EditWtpForm', 'save');"><?php Msg('BTN_SAVE'); ?></div></td>
+                    <td style="padding-right: 9px;"><div id="CancelButton1" class="button button_5em" onclick="closeAndFocusParent();"><?php Msg('BTN_CANCEL'); ?></div></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <?php Errors(); ?>
+    <tr>
+        <td class="label"><?php ModuleStatusFieldName(); ?></td>
+        <td class="help"><div style="cursor:pointer;" onclick="<?php ModuleStatusFieldHint(); ?>"><img src="images/question.gif"></div></td>
+        <td class="value popup_dialog_body_right_padded"><?php ModuleStatusField(); ?></td>
+    </tr>
+    <tr>
+        <td class="label"><span class="required"><?php ModuleMethodNameFieldName(); ?> *</span></td>
+        <td class="help"><div onclick="<?php ModuleNameFieldHint(); ?>" style="cursor:pointer;"><img src="images/question.gif"></div></td>
+        <td class="value popup_dialog_body_right_padded"><input type="text" <?php ModuleNameField(); ?>></td>
+    </tr>
+    <tr>
+        <td class="label"><span class="required"><?php ModuleMethodIDFieldName(); ?> *</span></td>
+        <td class="help"><div onclick="<?php ModuleIDFieldHint(); ?>" style="cursor:pointer;"><img src="images/question.gif"></div></td>
+        <td class="value popup_dialog_body_right_padded"><input type="text" <?php ModuleIDField(); ?>></td>
+    </tr>
+    <tr>
+        <td class="label"><span class="required"><?php ModuleMethodPassFieldName(); ?> *</span></td>
+        <td class="help"><div onclick="<?php ModulePassFieldHint(); ?>" style="cursor:pointer;"><img src="images/question.gif"></div></td>
+        <td class="value popup_dialog_body_right_padded"><input type="text" <?php ModulePassField(); ?>></td>
+    </tr>
+    <tr>
+        <td class="label popup_dialog_body_left_padded"><?php ModuleModeFieldName(); ?></td>
+        <td class="help"><div onclick="<?php ModuleModeFieldHint(); ?>" style="cursor:pointer;"><img src="images/question.gif"></div></td>
+        <td class="value popup_dialog_body_right_padded">
+            <select name="ModuleMode">
+                <?php ModuleModeOptions(); ?>
+            </select>
+        </td>
+    </tr>
+        <td colspan="3">
+            <table class="clear" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                	<td><span class="required"><?php Msg('REQUIRED_FIELD_LABEL'); ?></span></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tfoot>
+        <tr>
+            <th colspan="3" align="center">
+                <table class="clear">
+                    <tr>
+                        <td style="padding-right: 4px;"><div id="SaveButton2" class="button button_5em" onclick="formSubmit('EditWtpForm', 'save');"><?php Msg('BTN_SAVE'); ?></div></td>
+                        <td><div id="CancelButton2" class="button button_5em" onclick="closeAndFocusParent();"><?php Msg('BTN_CANCEL'); ?></div></td>
+                    </tr>
+                </table>
+            </th>
+        </tr>
+    </tfoot>
+</table>
+</form>
+<!-- END TPL (DO NOT REMOVE!) --><hr>
+</body>
+</html>

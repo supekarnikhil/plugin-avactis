@@ -1,16 +1,11 @@
 ===================DIEGIMAS=================
 
 1. Padarykite atsargine kopija[nebutina].
-2. Nukopijuokite avactis-system ir avactis-themess katalogus i Jusu avactis kataloga.
+
+2. kopija "payment_module_wtp_cc" katalogo į avactis-extensions katalogą jūsų įdiegta Avactis parduotuvę.
+
 3. Eikite i avactis-system/cache ir istrinkite visus failus.
-Perkraukite mokejimo moduliu puslapi administravime ir turi atsirasti mokejimo budas
-4. pridekite eilute i /avactis-system/shortname2path faila
 
-PM_WTP = "avactis-system/admin/templates/resources/payment-module-wtp-messages-eng.ini"
+4. Atnaujinti mokėjimas modulis sąrašas Admin srityje, Paysera.com mokėjimas modulis turėtų pasirodyti.
 
-5. Importuokite data.sql faila i Jusu duomenu baze.
-6. Dar karta eikite i avactis-system/cache ir istrinkite visus failus.
-Perkraukite mokejimo moduliu sarasa administravime, Paysera.com mokejimu modulis turetu pasikeist
-i aktyvu bei parinkta.
-
-Pereinant i Paysera.com nebuvo atliekami testavimai, todel kilus kazkokiems nesklandumams prasome pranesti i pagalba@mokejimai.lt
+Kai migruoja į Paysera.com nėra testings buvo, todėl, jei atsiranda kokių nors problemų, prašome pranešti support@paysera.com

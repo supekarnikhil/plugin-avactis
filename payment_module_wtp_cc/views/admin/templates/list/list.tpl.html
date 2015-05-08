@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<body>
+<hr><!-- BEGIN TPL (DO NOT REMOVE!) -->
+<!-- tinyMCE -->
+<script language="javascript" type="text/javascript">
+<!--
+function disableButtonsInForm()
+{
+    var buttons = new Array(
+                            'SaveButton1',
+                            'SaveButton2',
+                            'CancelButton1',
+                           'CancelButton2'
+                            );
+    disableButtons(buttons);
+}
+
+function trim(s)
+{
+    var left = 0;
+    var len = s.length;
+
+    if (s.length == 0) return "";
+
+    while (s.charAt(left) == ' ')
+    {
+        if (left == len - 1) break;
+        left++;
+    }
+
+    if (left == len - 1) return "";
+
+    var right = len - 1;
+    while (s.charAt(right) == ' ')
+    {
+        if (right == 0) break;
+        right--;
+    }
+
+    if (right == 0) return "";
+
+    return s.substring(left, right + 1);
+}
+
+
+function formSubmit(formId, formAction)
+{
+    var form = document.forms[formId];
+    if (formAction == 'save')
+    {
+        if (trim(form.ModuleName.value) == "")
+        {
+            alert('<?php Alert_001(); ?>');
+            return;
+        }
+    }
+
+    form.elements['ViewState[FormSubmitValue]'].value = formAction;
+    disableButtonsInForm();
+    form.submit();
+}
+
+//-->
+</script>
+
+<form <?php EditWtpForm(); ?> method="post" id="EditWtpForm">
+<?php HiddenArrayViewState(); ?>
+<?php Errors(); ?>
+
+<div class="portlet light">
+	<div class="portlet-title">
+		<!-- BEGIN Portlet PORTLET-->
+		<div class="portlet light ">
+                      <div class="portlet-title">
+                         <div class="caption">
+			   <i class="fa fa-gears font-blue-sharp"></i>
+				<span class="caption-subject font-blue-sharp bold uppercase"><?php ModuleType(); ?> </span>
+			   	<span class="caption-subject font-blue-sharp"><?php ModuleName(); ?></span>
+		         </div>
+			<div class="actions btn-set">
+				<button id="SaveButton1" title="<?php Msg('BTN_SAVE'); ?>" onclick="javascript:formSubmit('EditWtpForm', 'save');" type="button" name="<?php Msg('BTN_SAVE'); ?>" class="btn blue"><i class="fa fa-save"></i> <span class="hidden-480"><?php Msg("BTN_SAVE"); ?></span></button>
+	
+				<button id="CancelButton1" title="<?php Msg('BTN_CLOSE'); ?>" onclick="closeAndFocusParent();" type="button" name="<?php Msg('BTN_CLOSE'); ?>" class="btn btn-default"><i class="fa fa-times"></i> <span class="hidden-480"><?php Msg('BTN_CLOSE'); ?></span></button>
+			 </div>
+		    </div>
+
+		 <div class="portlet-body">
+		        <!-- Start - Row 1-->
+		       	<div class="row margin-bottom-10">
+				<div class="col-sm-4">
+					<span class="required bold"><?php ModuleStatusFieldName(); ?></span>
+					<span class="pull-right"><a onclick="<?php ModuleStatusFieldHint(); ?>" href="javascript:void(0);"><i style="cursor:pointer;" class="fa fa-question-circle"></i></a></span>
+				</div>
+				<div class="col-sm-8">
+					<?php ModuleStatusField(); ?>
+				</div>
+			</div>                 
+		       <!-- End - Row 1-->
+		       
+		       <!-- Start - Row 2-->
+		<div class="row margin-bottom-10">
+			<div class="col-sm-4">
+				<span class="required bold"><?php ModuleMethodNameFieldName(); ?> *</span>
+				<span class="pull-right"><a onclick="<?php ModuleNameFieldHint(); ?>" href="javascript:void(0);"><i style="cursor:pointer;" class="fa fa-question-circle"></i></a></span>
+			</div>
+			<div class="col-sm-8">
+				<input class="form-control input-sm input-large" type="text" <?php ModuleNameField(); ?>>
+			</div>
+		</div>
+		<!-- End - Row 2-->
+
+		 <!-- Start - Row 3-->
+		<div class="row margin-bottom-10">
+			<div class="col-sm-4">
+				<span class="required bold"><?php ModuleMethodIDFieldName(); ?> *</span>
+				<span class="pull-right"><a onclick="<?php ModuleIDFieldHint(); ?>" href="javascript:void(0);"><i style="cursor:pointer;" class="fa fa-question-circle"></i></a></span>
+			</div>
+			<div class="col-sm-8">
+				<input class="form-control input-sm input-large" type="text" <?php ModuleIDField(); ?>>
+			</div>
+		</div>
+		<!-- End - Row 3-->
+
+		<!-- Start - Row 4-->
+		<div class="row margin-bottom-10">
+			<div class="col-sm-4">
+				<span class="required bold"><?php ModuleMethodPassFieldName(); ?> *</span>
+				<span class="pull-right"><a onclick="<?php ModulePassFieldHint(); ?>" href="javascript:void(0);"><i style="cursor:pointer;" class="fa fa-question-circle"></i></a></span>
+			</div>
+			<div class="col-sm-8">
+				<input class="form-control input-sm input-large" type="text" <?php ModulePassField(); ?>>
+			</div>
+		</div>
+		<!-- End - Row 4-->
+		
+		<!-- Start - Row 5-->
+		<div class="row margin-bottom-10">
+			<div class="col-sm-4">
+				<span class="required bold"><?php ModuleModeFieldName(); ?> *</span>
+				<span class="pull-right"><a onclick="<?php ModuleModeFieldHint(); ?>" href="javascript:void(0);"><i style="cursor:pointer;" class="fa fa-question-circle"></i></a></span>
+			</div>
+			<div class="col-sm-8">
+				<!--<input class="form-control input-sm input-large" type="text" <?php ModulePassField(); ?>> -->
+				<select class="form-control input-sm input-large" name="ModuleMode">
+					<?php ModuleModeOptions(); ?>
+				</select>
+			</div>
+		</div>
+		<!-- End - Row 5-->
+		<span class="required alert-danger"><?php Msg('REQUIRED_FIELD_LABEL'); ?></span>
+		
+		<div class="actions" align="center">
+			<div class="actions btn-set">
+				<button id="SaveButton2" title="<?php Msg('BTN_SAVE'); ?>" onclick="formSubmit('EditWtpForm', 'save');" type="button" 
+				name="<?php Msg('BTN_SAVE'); ?>" class="btn blue">
+					<i class="fa fa-save"></i> 
+					<span class="hidden-480"><?php Msg("BTN_SAVE"); ?></span>
+				</button>
+		
+				<button id="CancelButton2" title="<?php Msg('BTN_CLOSE'); ?>" onclick="closeAndFocusParent();" type="button" name="<?php Msg('BTN_CLOSE'); ?>" class="btn btn-default"><i class="fa fa-times"></i> <span class="hidden-480"><?php Msg('BTN_CLOSE'); ?></span></button>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+<!-- END TPL (DO NOT REMOVE!) --><hr>
+
